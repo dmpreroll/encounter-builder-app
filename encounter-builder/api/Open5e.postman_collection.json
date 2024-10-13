@@ -1,0 +1,4584 @@
+{
+	"info": {
+		"_postman_id": "54151a94-33f5-4bcc-a71d-d03ebfed1c84",
+		"name": "Open5e",
+		"description": "The Open5e API includes all monsters and spells from the SRD and other OGL sources as well as a search API, so you can access any part of the SRD from your app or website.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5410396"
+	},
+	"item": [
+		{
+			"name": "manifest",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Retrieve Manifest",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/manifest/:id/?ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manifest",
+										":id",
+										""
+									],
+									"query": [
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<string>",
+											"description": "(Required) A unique integer value identifying this manifest."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular manifest.\n\nFor each data source file, there is a corresponding manifest containing an\nMD5 hash of the data inside that file. When we update our data files, the\ncorresponding manifest's hash changes. If you host a service that\nautomatically downloads data from Open5e, you can periodically check\nthe manifests to determine whether your data is out of date."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/manifest/:id/?ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"manifest",
+												":id",
+												""
+											],
+											"query": [
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"filename\": \"<string>\",\n  \"type\": \"<string>\",\n  \"hash\": \"<string>\",\n  \"created_at\": \"<dateTime>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Manifests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/manifest/?page=<integer>&limit=<integer>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"manifest",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of of manifests.\n\nFor each data source file, there is a corresponding manifest containing an\nMD5 hash of the data inside that file. When we update our data files, the\ncorresponding manifest's hash changes. If you host a service that\nautomatically downloads data from Open5e, you can periodically check\nthe manifests to determine whether your data is out of date."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/manifest/?page=<integer>&limit=<integer>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"manifest",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"filename\": \"<string>\",\n      \"type\": \"<string>\",\n      \"hash\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"type\": \"<string>\",\n      \"hash\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "spells",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Spell",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/spells/:slug/?slug__in=<string>&slug__iexact=<string>&slug=<string>&name__iexact=<string>&name=<string>&level__iexact=<string>&level=<string>&level__in=<string>&level_int__iexact=<string>&level_int=<string>&level_int__range=<string>&school__iexact=<string>&school=<string>&school__in=<string>&duration__iexact=<string>&duration=<string>&duration__in=<string>&components__iexact=<string>&components=<string>&components__in=<string>&concentration__iexact=<string>&concentration=<string>&concentration__in=<string>&casting_time__iexact=<string>&casting_time=<string>&casting_time__in=<string>&dnd_class__iexact=<string>&dnd_class=<string>&dnd_class__in=<string>&dnd_class__icontains=<string>&document__slug__iexact=<string>&document__slug=<string>&document__slug__in=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"spells",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "slug__in",
+											"value": "<string>",
+											"description": "slug__in"
+										},
+										{
+											"key": "slug__iexact",
+											"value": "<string>",
+											"description": "slug__iexact"
+										},
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "slug"
+										},
+										{
+											"key": "name__iexact",
+											"value": "<string>",
+											"description": "name__iexact"
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "level__iexact",
+											"value": "<string>",
+											"description": "level__iexact"
+										},
+										{
+											"key": "level",
+											"value": "<string>",
+											"description": "level"
+										},
+										{
+											"key": "level__in",
+											"value": "<string>",
+											"description": "level__in"
+										},
+										{
+											"key": "level_int__iexact",
+											"value": "<string>",
+											"description": "level_int__iexact"
+										},
+										{
+											"key": "level_int",
+											"value": "<string>",
+											"description": "level_int"
+										},
+										{
+											"key": "level_int__range",
+											"value": "<string>",
+											"description": "level_int__range"
+										},
+										{
+											"key": "school__iexact",
+											"value": "<string>",
+											"description": "school__iexact"
+										},
+										{
+											"key": "school",
+											"value": "<string>",
+											"description": "school"
+										},
+										{
+											"key": "school__in",
+											"value": "<string>",
+											"description": "school__in"
+										},
+										{
+											"key": "duration__iexact",
+											"value": "<string>",
+											"description": "duration__iexact"
+										},
+										{
+											"key": "duration",
+											"value": "<string>",
+											"description": "duration"
+										},
+										{
+											"key": "duration__in",
+											"value": "<string>",
+											"description": "duration__in"
+										},
+										{
+											"key": "components__iexact",
+											"value": "<string>",
+											"description": "components__iexact"
+										},
+										{
+											"key": "components",
+											"value": "<string>",
+											"description": "components"
+										},
+										{
+											"key": "components__in",
+											"value": "<string>",
+											"description": "components__in"
+										},
+										{
+											"key": "concentration__iexact",
+											"value": "<string>",
+											"description": "concentration__iexact"
+										},
+										{
+											"key": "concentration",
+											"value": "<string>",
+											"description": "concentration"
+										},
+										{
+											"key": "concentration__in",
+											"value": "<string>",
+											"description": "concentration__in"
+										},
+										{
+											"key": "casting_time__iexact",
+											"value": "<string>",
+											"description": "casting_time__iexact"
+										},
+										{
+											"key": "casting_time",
+											"value": "<string>",
+											"description": "casting_time"
+										},
+										{
+											"key": "casting_time__in",
+											"value": "<string>",
+											"description": "casting_time__in"
+										},
+										{
+											"key": "dnd_class__iexact",
+											"value": "<string>",
+											"description": "dnd_class__iexact"
+										},
+										{
+											"key": "dnd_class",
+											"value": "<string>",
+											"description": "dnd_class"
+										},
+										{
+											"key": "dnd_class__in",
+											"value": "<string>",
+											"description": "dnd_class__in"
+										},
+										{
+											"key": "dnd_class__icontains",
+											"value": "<string>",
+											"description": "dnd_class__icontains"
+										},
+										{
+											"key": "document__slug__iexact",
+											"value": "<string>",
+											"description": "document__slug__iexact"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "document__slug__in",
+											"value": "<string>",
+											"description": "document__slug__in"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this spell."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular spell."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/spells/:slug/?slug__in=<string>&slug__iexact=<string>&slug=<string>&name__iexact=<string>&name=<string>&level__iexact=<string>&level=<string>&level__in=<string>&level_int__iexact=<string>&level_int=<string>&level_int__range=<string>&school__iexact=<string>&school=<string>&school__in=<string>&duration__iexact=<string>&duration=<string>&duration__in=<string>&components__iexact=<string>&components=<string>&components__in=<string>&concentration__iexact=<string>&concentration=<string>&concentration__in=<string>&casting_time__iexact=<string>&casting_time=<string>&casting_time__in=<string>&dnd_class__iexact=<string>&dnd_class=<string>&dnd_class__in=<string>&dnd_class__icontains=<string>&document__slug__iexact=<string>&document__slug=<string>&document__slug__in=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"spells",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "slug__in",
+													"value": "<string>",
+													"description": "slug__in"
+												},
+												{
+													"key": "slug__iexact",
+													"value": "<string>",
+													"description": "slug__iexact"
+												},
+												{
+													"key": "slug",
+													"value": "<string>",
+													"description": "slug"
+												},
+												{
+													"key": "name__iexact",
+													"value": "<string>",
+													"description": "name__iexact"
+												},
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "level__iexact",
+													"value": "<string>",
+													"description": "level__iexact"
+												},
+												{
+													"key": "level",
+													"value": "<string>",
+													"description": "level"
+												},
+												{
+													"key": "level__in",
+													"value": "<string>",
+													"description": "level__in"
+												},
+												{
+													"key": "level_int__iexact",
+													"value": "<string>",
+													"description": "level_int__iexact"
+												},
+												{
+													"key": "level_int",
+													"value": "<string>",
+													"description": "level_int"
+												},
+												{
+													"key": "level_int__range",
+													"value": "<string>",
+													"description": "level_int__range"
+												},
+												{
+													"key": "school__iexact",
+													"value": "<string>",
+													"description": "school__iexact"
+												},
+												{
+													"key": "school",
+													"value": "<string>",
+													"description": "school"
+												},
+												{
+													"key": "school__in",
+													"value": "<string>",
+													"description": "school__in"
+												},
+												{
+													"key": "duration__iexact",
+													"value": "<string>",
+													"description": "duration__iexact"
+												},
+												{
+													"key": "duration",
+													"value": "<string>",
+													"description": "duration"
+												},
+												{
+													"key": "duration__in",
+													"value": "<string>",
+													"description": "duration__in"
+												},
+												{
+													"key": "components__iexact",
+													"value": "<string>",
+													"description": "components__iexact"
+												},
+												{
+													"key": "components",
+													"value": "<string>",
+													"description": "components"
+												},
+												{
+													"key": "components__in",
+													"value": "<string>",
+													"description": "components__in"
+												},
+												{
+													"key": "concentration__iexact",
+													"value": "<string>",
+													"description": "concentration__iexact"
+												},
+												{
+													"key": "concentration",
+													"value": "<string>",
+													"description": "concentration"
+												},
+												{
+													"key": "concentration__in",
+													"value": "<string>",
+													"description": "concentration__in"
+												},
+												{
+													"key": "casting_time__iexact",
+													"value": "<string>",
+													"description": "casting_time__iexact"
+												},
+												{
+													"key": "casting_time",
+													"value": "<string>",
+													"description": "casting_time"
+												},
+												{
+													"key": "casting_time__in",
+													"value": "<string>",
+													"description": "casting_time__in"
+												},
+												{
+													"key": "dnd_class__iexact",
+													"value": "<string>",
+													"description": "dnd_class__iexact"
+												},
+												{
+													"key": "dnd_class",
+													"value": "<string>",
+													"description": "dnd_class"
+												},
+												{
+													"key": "dnd_class__in",
+													"value": "<string>",
+													"description": "dnd_class__in"
+												},
+												{
+													"key": "dnd_class__icontains",
+													"value": "<string>",
+													"description": "dnd_class__icontains"
+												},
+												{
+													"key": "document__slug__iexact",
+													"value": "<string>",
+													"description": "document__slug__iexact"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "document__slug__in",
+													"value": "<string>",
+													"description": "document__slug__in"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"higher_level\": \"<string>\",\n  \"page\": \"<string>\",\n  \"range\": \"<string>\",\n  \"components\": \"<string>\",\n  \"material\": \"<string>\",\n  \"ritual\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"concentration\": \"<string>\",\n  \"casting_time\": \"<string>\",\n  \"level\": \"<string>\",\n  \"school\": \"<string>\",\n  \"dnd_class\": \"<string>\",\n  \"archetype\": \"<string>\",\n  \"circles\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"level_int\": \"<integer>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\",\n  \"document__license_url\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Spells",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/spells/?page=<integer>&limit=<integer>&slug__in=<string>&slug__iexact=<string>&slug=<string>&name__iexact=<string>&name=<string>&level__iexact=<string>&level=<string>&level__in=<string>&level_int__iexact=<string>&level_int=<string>&level_int__range=<string>&school__iexact=<string>&school=<string>&school__in=<string>&duration__iexact=<string>&duration=<string>&duration__in=<string>&components__iexact=<string>&components=<string>&components__in=<string>&concentration__iexact=<string>&concentration=<string>&concentration__in=<string>&casting_time__iexact=<string>&casting_time=<string>&casting_time__in=<string>&dnd_class__iexact=<string>&dnd_class=<string>&dnd_class__in=<string>&dnd_class__icontains=<string>&document__slug__iexact=<string>&document__slug=<string>&document__slug__in=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"spells",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "slug__in",
+									"value": "<string>",
+									"description": "slug__in"
+								},
+								{
+									"key": "slug__iexact",
+									"value": "<string>",
+									"description": "slug__iexact"
+								},
+								{
+									"key": "slug",
+									"value": "<string>",
+									"description": "slug"
+								},
+								{
+									"key": "name__iexact",
+									"value": "<string>",
+									"description": "name__iexact"
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "level__iexact",
+									"value": "<string>",
+									"description": "level__iexact"
+								},
+								{
+									"key": "level",
+									"value": "<string>",
+									"description": "level"
+								},
+								{
+									"key": "level__in",
+									"value": "<string>",
+									"description": "level__in"
+								},
+								{
+									"key": "level_int__iexact",
+									"value": "<string>",
+									"description": "level_int__iexact"
+								},
+								{
+									"key": "level_int",
+									"value": "<string>",
+									"description": "level_int"
+								},
+								{
+									"key": "level_int__range",
+									"value": "<string>",
+									"description": "level_int__range"
+								},
+								{
+									"key": "school__iexact",
+									"value": "<string>",
+									"description": "school__iexact"
+								},
+								{
+									"key": "school",
+									"value": "<string>",
+									"description": "school"
+								},
+								{
+									"key": "school__in",
+									"value": "<string>",
+									"description": "school__in"
+								},
+								{
+									"key": "duration__iexact",
+									"value": "<string>",
+									"description": "duration__iexact"
+								},
+								{
+									"key": "duration",
+									"value": "<string>",
+									"description": "duration"
+								},
+								{
+									"key": "duration__in",
+									"value": "<string>",
+									"description": "duration__in"
+								},
+								{
+									"key": "components__iexact",
+									"value": "<string>",
+									"description": "components__iexact"
+								},
+								{
+									"key": "components",
+									"value": "<string>",
+									"description": "components"
+								},
+								{
+									"key": "components__in",
+									"value": "<string>",
+									"description": "components__in"
+								},
+								{
+									"key": "concentration__iexact",
+									"value": "<string>",
+									"description": "concentration__iexact"
+								},
+								{
+									"key": "concentration",
+									"value": "<string>",
+									"description": "concentration"
+								},
+								{
+									"key": "concentration__in",
+									"value": "<string>",
+									"description": "concentration__in"
+								},
+								{
+									"key": "casting_time__iexact",
+									"value": "<string>",
+									"description": "casting_time__iexact"
+								},
+								{
+									"key": "casting_time",
+									"value": "<string>",
+									"description": "casting_time"
+								},
+								{
+									"key": "casting_time__in",
+									"value": "<string>",
+									"description": "casting_time__in"
+								},
+								{
+									"key": "dnd_class__iexact",
+									"value": "<string>",
+									"description": "dnd_class__iexact"
+								},
+								{
+									"key": "dnd_class",
+									"value": "<string>",
+									"description": "dnd_class"
+								},
+								{
+									"key": "dnd_class__in",
+									"value": "<string>",
+									"description": "dnd_class__in"
+								},
+								{
+									"key": "dnd_class__icontains",
+									"value": "<string>",
+									"description": "dnd_class__icontains"
+								},
+								{
+									"key": "document__slug__iexact",
+									"value": "<string>",
+									"description": "document__slug__iexact"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "document__slug__in",
+									"value": "<string>",
+									"description": "document__slug__in"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of spells."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/spells/?page=<integer>&limit=<integer>&slug__in=<string>&slug__iexact=<string>&slug=<string>&name__iexact=<string>&name=<string>&level__iexact=<string>&level=<string>&level__in=<string>&level_int__iexact=<string>&level_int=<string>&level_int__range=<string>&school__iexact=<string>&school=<string>&school__in=<string>&duration__iexact=<string>&duration=<string>&duration__in=<string>&components__iexact=<string>&components=<string>&components__in=<string>&concentration__iexact=<string>&concentration=<string>&concentration__in=<string>&casting_time__iexact=<string>&casting_time=<string>&casting_time__in=<string>&dnd_class__iexact=<string>&dnd_class=<string>&dnd_class__in=<string>&dnd_class__icontains=<string>&document__slug__iexact=<string>&document__slug=<string>&document__slug__in=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"spells",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "slug__in",
+											"value": "<string>",
+											"description": "slug__in"
+										},
+										{
+											"key": "slug__iexact",
+											"value": "<string>",
+											"description": "slug__iexact"
+										},
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "slug"
+										},
+										{
+											"key": "name__iexact",
+											"value": "<string>",
+											"description": "name__iexact"
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "level__iexact",
+											"value": "<string>",
+											"description": "level__iexact"
+										},
+										{
+											"key": "level",
+											"value": "<string>",
+											"description": "level"
+										},
+										{
+											"key": "level__in",
+											"value": "<string>",
+											"description": "level__in"
+										},
+										{
+											"key": "level_int__iexact",
+											"value": "<string>",
+											"description": "level_int__iexact"
+										},
+										{
+											"key": "level_int",
+											"value": "<string>",
+											"description": "level_int"
+										},
+										{
+											"key": "level_int__range",
+											"value": "<string>",
+											"description": "level_int__range"
+										},
+										{
+											"key": "school__iexact",
+											"value": "<string>",
+											"description": "school__iexact"
+										},
+										{
+											"key": "school",
+											"value": "<string>",
+											"description": "school"
+										},
+										{
+											"key": "school__in",
+											"value": "<string>",
+											"description": "school__in"
+										},
+										{
+											"key": "duration__iexact",
+											"value": "<string>",
+											"description": "duration__iexact"
+										},
+										{
+											"key": "duration",
+											"value": "<string>",
+											"description": "duration"
+										},
+										{
+											"key": "duration__in",
+											"value": "<string>",
+											"description": "duration__in"
+										},
+										{
+											"key": "components__iexact",
+											"value": "<string>",
+											"description": "components__iexact"
+										},
+										{
+											"key": "components",
+											"value": "<string>",
+											"description": "components"
+										},
+										{
+											"key": "components__in",
+											"value": "<string>",
+											"description": "components__in"
+										},
+										{
+											"key": "concentration__iexact",
+											"value": "<string>",
+											"description": "concentration__iexact"
+										},
+										{
+											"key": "concentration",
+											"value": "<string>",
+											"description": "concentration"
+										},
+										{
+											"key": "concentration__in",
+											"value": "<string>",
+											"description": "concentration__in"
+										},
+										{
+											"key": "casting_time__iexact",
+											"value": "<string>",
+											"description": "casting_time__iexact"
+										},
+										{
+											"key": "casting_time",
+											"value": "<string>",
+											"description": "casting_time"
+										},
+										{
+											"key": "casting_time__in",
+											"value": "<string>",
+											"description": "casting_time__in"
+										},
+										{
+											"key": "dnd_class__iexact",
+											"value": "<string>",
+											"description": "dnd_class__iexact"
+										},
+										{
+											"key": "dnd_class",
+											"value": "<string>",
+											"description": "dnd_class"
+										},
+										{
+											"key": "dnd_class__in",
+											"value": "<string>",
+											"description": "dnd_class__in"
+										},
+										{
+											"key": "dnd_class__icontains",
+											"value": "<string>",
+											"description": "dnd_class__icontains"
+										},
+										{
+											"key": "document__slug__iexact",
+											"value": "<string>",
+											"description": "document__slug__iexact"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "document__slug__in",
+											"value": "<string>",
+											"description": "document__slug__in"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"higher_level\": \"<string>\",\n      \"page\": \"<string>\",\n      \"range\": \"<string>\",\n      \"components\": \"<string>\",\n      \"material\": \"<string>\",\n      \"ritual\": \"<string>\",\n      \"duration\": \"<string>\",\n      \"concentration\": \"<string>\",\n      \"casting_time\": \"<string>\",\n      \"level\": \"<string>\",\n      \"school\": \"<string>\",\n      \"dnd_class\": \"<string>\",\n      \"archetype\": \"<string>\",\n      \"circles\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"level_int\": \"<integer>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"higher_level\": \"<string>\",\n      \"page\": \"<string>\",\n      \"range\": \"<string>\",\n      \"components\": \"<string>\",\n      \"material\": \"<string>\",\n      \"ritual\": \"<string>\",\n      \"duration\": \"<string>\",\n      \"concentration\": \"<string>\",\n      \"casting_time\": \"<string>\",\n      \"level\": \"<string>\",\n      \"school\": \"<string>\",\n      \"dnd_class\": \"<string>\",\n      \"archetype\": \"<string>\",\n      \"circles\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"level_int\": \"<integer>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "monsters",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Monster",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/monsters/:slug/?challenge_rating=<string>&armor_class=<string>&type=<string>&name=<string>&page_no=<string>&document=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"monsters",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "challenge_rating",
+											"value": "<string>",
+											"description": "challenge_rating"
+										},
+										{
+											"key": "armor_class",
+											"value": "<string>",
+											"description": "armor_class"
+										},
+										{
+											"key": "type",
+											"value": "<string>",
+											"description": "type"
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "page_no",
+											"value": "<string>",
+											"description": "page_no"
+										},
+										{
+											"key": "document",
+											"value": "<string>",
+											"description": "document"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this monster."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular monster."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/monsters/:slug/?challenge_rating=<string>&armor_class=<string>&type=<string>&name=<string>&page_no=<string>&document=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"monsters",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "challenge_rating",
+													"value": "<string>",
+													"description": "challenge_rating"
+												},
+												{
+													"key": "armor_class",
+													"value": "<string>",
+													"description": "armor_class"
+												},
+												{
+													"key": "type",
+													"value": "<string>",
+													"description": "type"
+												},
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "page_no",
+													"value": "<string>",
+													"description": "page_no"
+												},
+												{
+													"key": "document",
+													"value": "<string>",
+													"description": "document"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"size\": \"<string>\",\n  \"type\": \"<string>\",\n  \"subtype\": \"<string>\",\n  \"alignment\": \"<string>\",\n  \"hit_dice\": \"<string>\",\n  \"damage_vulnerabilities\": \"<string>\",\n  \"damage_resistances\": \"<string>\",\n  \"damage_immunities\": \"<string>\",\n  \"condition_immunities\": \"<string>\",\n  \"senses\": \"<string>\",\n  \"languages\": \"<string>\",\n  \"challenge_rating\": \"<string>\",\n  \"legendary_desc\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"group\": \"<string>\",\n  \"armor_class\": \"<integer>\",\n  \"armor_desc\": \"<string>\",\n  \"hit_points\": \"<integer>\",\n  \"speed\": \"<string>\",\n  \"strength\": \"<integer>\",\n  \"dexterity\": \"<integer>\",\n  \"constitution\": \"<integer>\",\n  \"intelligence\": \"<integer>\",\n  \"wisdom\": \"<integer>\",\n  \"charisma\": \"<integer>\",\n  \"strength_save\": \"<integer>\",\n  \"dexterity_save\": \"<integer>\",\n  \"constitution_save\": \"<integer>\",\n  \"intelligence_save\": \"<integer>\",\n  \"wisdom_save\": \"<integer>\",\n  \"charisma_save\": \"<integer>\",\n  \"perception\": \"<integer>\",\n  \"skills\": \"<string>\",\n  \"cr\": \"<number>\",\n  \"actions\": \"<string>\",\n  \"reactions\": \"<string>\",\n  \"legendary_actions\": \"<string>\",\n  \"special_abilities\": \"<string>\",\n  \"spell_list\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"page_no\": \"<integer>\",\n  \"img_main\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\",\n  \"document__license_url\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Monsters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/monsters/?page=<integer>&limit=<integer>&challenge_rating=<string>&armor_class=<string>&type=<string>&name=<string>&page_no=<string>&document=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"monsters",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "challenge_rating",
+									"value": "<string>",
+									"description": "challenge_rating"
+								},
+								{
+									"key": "armor_class",
+									"value": "<string>",
+									"description": "armor_class"
+								},
+								{
+									"key": "type",
+									"value": "<string>",
+									"description": "type"
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "page_no",
+									"value": "<string>",
+									"description": "page_no"
+								},
+								{
+									"key": "document",
+									"value": "<string>",
+									"description": "document"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of monsters."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/monsters/?page=<integer>&limit=<integer>&challenge_rating=<string>&armor_class=<string>&type=<string>&name=<string>&page_no=<string>&document=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"monsters",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "challenge_rating",
+											"value": "<string>",
+											"description": "challenge_rating"
+										},
+										{
+											"key": "armor_class",
+											"value": "<string>",
+											"description": "armor_class"
+										},
+										{
+											"key": "type",
+											"value": "<string>",
+											"description": "type"
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "page_no",
+											"value": "<string>",
+											"description": "page_no"
+										},
+										{
+											"key": "document",
+											"value": "<string>",
+											"description": "document"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"size\": \"<string>\",\n      \"type\": \"<string>\",\n      \"subtype\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"hit_dice\": \"<string>\",\n      \"damage_vulnerabilities\": \"<string>\",\n      \"damage_resistances\": \"<string>\",\n      \"damage_immunities\": \"<string>\",\n      \"condition_immunities\": \"<string>\",\n      \"senses\": \"<string>\",\n      \"languages\": \"<string>\",\n      \"challenge_rating\": \"<string>\",\n      \"legendary_desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"group\": \"<string>\",\n      \"armor_class\": \"<integer>\",\n      \"armor_desc\": \"<string>\",\n      \"hit_points\": \"<integer>\",\n      \"speed\": \"<string>\",\n      \"strength\": \"<integer>\",\n      \"dexterity\": \"<integer>\",\n      \"constitution\": \"<integer>\",\n      \"intelligence\": \"<integer>\",\n      \"wisdom\": \"<integer>\",\n      \"charisma\": \"<integer>\",\n      \"strength_save\": \"<integer>\",\n      \"dexterity_save\": \"<integer>\",\n      \"constitution_save\": \"<integer>\",\n      \"intelligence_save\": \"<integer>\",\n      \"wisdom_save\": \"<integer>\",\n      \"charisma_save\": \"<integer>\",\n      \"perception\": \"<integer>\",\n      \"skills\": \"<string>\",\n      \"cr\": \"<number>\",\n      \"actions\": \"<string>\",\n      \"reactions\": \"<string>\",\n      \"legendary_actions\": \"<string>\",\n      \"special_abilities\": \"<string>\",\n      \"spell_list\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"page_no\": \"<integer>\",\n      \"img_main\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"size\": \"<string>\",\n      \"type\": \"<string>\",\n      \"subtype\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"hit_dice\": \"<string>\",\n      \"damage_vulnerabilities\": \"<string>\",\n      \"damage_resistances\": \"<string>\",\n      \"damage_immunities\": \"<string>\",\n      \"condition_immunities\": \"<string>\",\n      \"senses\": \"<string>\",\n      \"languages\": \"<string>\",\n      \"challenge_rating\": \"<string>\",\n      \"legendary_desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"group\": \"<string>\",\n      \"armor_class\": \"<integer>\",\n      \"armor_desc\": \"<string>\",\n      \"hit_points\": \"<integer>\",\n      \"speed\": \"<string>\",\n      \"strength\": \"<integer>\",\n      \"dexterity\": \"<integer>\",\n      \"constitution\": \"<integer>\",\n      \"intelligence\": \"<integer>\",\n      \"wisdom\": \"<integer>\",\n      \"charisma\": \"<integer>\",\n      \"strength_save\": \"<integer>\",\n      \"dexterity_save\": \"<integer>\",\n      \"constitution_save\": \"<integer>\",\n      \"intelligence_save\": \"<integer>\",\n      \"wisdom_save\": \"<integer>\",\n      \"charisma_save\": \"<integer>\",\n      \"perception\": \"<integer>\",\n      \"skills\": \"<string>\",\n      \"cr\": \"<number>\",\n      \"actions\": \"<string>\",\n      \"reactions\": \"<string>\",\n      \"legendary_actions\": \"<string>\",\n      \"special_abilities\": \"<string>\",\n      \"spell_list\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"page_no\": \"<integer>\",\n      \"img_main\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List Monsters by Name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/monsters/?name={{name}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"monsters",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set.",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page.",
+									"disabled": true
+								},
+								{
+									"key": "challenge_rating",
+									"value": "<string>",
+									"description": "challenge_rating",
+									"disabled": true
+								},
+								{
+									"key": "armor_class",
+									"value": "<string>",
+									"description": "armor_class",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "<string>",
+									"description": "type",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "{{name}}",
+									"description": "name"
+								},
+								{
+									"key": "page_no",
+									"value": "<string>",
+									"description": "page_no",
+									"disabled": true
+								},
+								{
+									"key": "document",
+									"value": "<string>",
+									"description": "document",
+									"disabled": true
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug",
+									"disabled": true
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results.",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of monsters."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/monsters/?page=<integer>&limit=<integer>&challenge_rating=<string>&armor_class=<string>&type=<string>&name=<string>&page_no=<string>&document=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"monsters",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "challenge_rating",
+											"value": "<string>",
+											"description": "challenge_rating"
+										},
+										{
+											"key": "armor_class",
+											"value": "<string>",
+											"description": "armor_class"
+										},
+										{
+											"key": "type",
+											"value": "<string>",
+											"description": "type"
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "page_no",
+											"value": "<string>",
+											"description": "page_no"
+										},
+										{
+											"key": "document",
+											"value": "<string>",
+											"description": "document"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"size\": \"<string>\",\n      \"type\": \"<string>\",\n      \"subtype\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"hit_dice\": \"<string>\",\n      \"damage_vulnerabilities\": \"<string>\",\n      \"damage_resistances\": \"<string>\",\n      \"damage_immunities\": \"<string>\",\n      \"condition_immunities\": \"<string>\",\n      \"senses\": \"<string>\",\n      \"languages\": \"<string>\",\n      \"challenge_rating\": \"<string>\",\n      \"legendary_desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"group\": \"<string>\",\n      \"armor_class\": \"<integer>\",\n      \"armor_desc\": \"<string>\",\n      \"hit_points\": \"<integer>\",\n      \"speed\": \"<string>\",\n      \"strength\": \"<integer>\",\n      \"dexterity\": \"<integer>\",\n      \"constitution\": \"<integer>\",\n      \"intelligence\": \"<integer>\",\n      \"wisdom\": \"<integer>\",\n      \"charisma\": \"<integer>\",\n      \"strength_save\": \"<integer>\",\n      \"dexterity_save\": \"<integer>\",\n      \"constitution_save\": \"<integer>\",\n      \"intelligence_save\": \"<integer>\",\n      \"wisdom_save\": \"<integer>\",\n      \"charisma_save\": \"<integer>\",\n      \"perception\": \"<integer>\",\n      \"skills\": \"<string>\",\n      \"cr\": \"<number>\",\n      \"actions\": \"<string>\",\n      \"reactions\": \"<string>\",\n      \"legendary_actions\": \"<string>\",\n      \"special_abilities\": \"<string>\",\n      \"spell_list\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"page_no\": \"<integer>\",\n      \"img_main\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"size\": \"<string>\",\n      \"type\": \"<string>\",\n      \"subtype\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"hit_dice\": \"<string>\",\n      \"damage_vulnerabilities\": \"<string>\",\n      \"damage_resistances\": \"<string>\",\n      \"damage_immunities\": \"<string>\",\n      \"condition_immunities\": \"<string>\",\n      \"senses\": \"<string>\",\n      \"languages\": \"<string>\",\n      \"challenge_rating\": \"<string>\",\n      \"legendary_desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"group\": \"<string>\",\n      \"armor_class\": \"<integer>\",\n      \"armor_desc\": \"<string>\",\n      \"hit_points\": \"<integer>\",\n      \"speed\": \"<string>\",\n      \"strength\": \"<integer>\",\n      \"dexterity\": \"<integer>\",\n      \"constitution\": \"<integer>\",\n      \"intelligence\": \"<integer>\",\n      \"wisdom\": \"<integer>\",\n      \"charisma\": \"<integer>\",\n      \"strength_save\": \"<integer>\",\n      \"dexterity_save\": \"<integer>\",\n      \"constitution_save\": \"<integer>\",\n      \"intelligence_save\": \"<integer>\",\n      \"wisdom_save\": \"<integer>\",\n      \"charisma_save\": \"<integer>\",\n      \"perception\": \"<integer>\",\n      \"skills\": \"<string>\",\n      \"cr\": \"<number>\",\n      \"actions\": \"<string>\",\n      \"reactions\": \"<string>\",\n      \"legendary_actions\": \"<string>\",\n      \"special_abilities\": \"<string>\",\n      \"spell_list\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"page_no\": \"<integer>\",\n      \"img_main\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "documents",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Retrieve Document",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/documents/:id/?slug=<string>&title=<string>&organization=<string>&license=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"documents",
+										":id",
+										""
+									],
+									"query": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "A short, human readable string uniquely identifying this document"
+										},
+										{
+											"key": "title",
+											"value": "<string>",
+											"description": "A short descriptive title of this document"
+										},
+										{
+											"key": "organization",
+											"value": "<string>",
+											"description": "The organization that published the document"
+										},
+										{
+											"key": "license",
+											"value": "<string>",
+											"description": "The license under which the document is published"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<string>",
+											"description": "(Required) A unique integer value identifying this document."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular document."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/documents/:id/?slug=<string>&title=<string>&organization=<string>&license=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"documents",
+												":id",
+												""
+											],
+											"query": [
+												{
+													"key": "slug",
+													"value": "<string>",
+													"description": "A short, human readable string uniquely identifying this document"
+												},
+												{
+													"key": "title",
+													"value": "<string>",
+													"description": "A short descriptive title of this document"
+												},
+												{
+													"key": "organization",
+													"value": "<string>",
+													"description": "The organization that published the document"
+												},
+												{
+													"key": "license",
+													"value": "<string>",
+													"description": "The license under which the document is published"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "id"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "null"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Documents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/documents/?page=<integer>&limit=<integer>&slug=<string>&title=<string>&organization=<string>&license=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"documents",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "slug",
+									"value": "<string>",
+									"description": "A short, human readable string uniquely identifying this document"
+								},
+								{
+									"key": "title",
+									"value": "<string>",
+									"description": "A short descriptive title of this document"
+								},
+								{
+									"key": "organization",
+									"value": "<string>",
+									"description": "The organization that published the document"
+								},
+								{
+									"key": "license",
+									"value": "<string>",
+									"description": "The license under which the document is published"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of documents."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/documents/?page=<integer>&limit=<integer>&slug=<string>&title=<string>&organization=<string>&license=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"documents",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "A short, human readable string uniquely identifying this document"
+										},
+										{
+											"key": "title",
+											"value": "<string>",
+											"description": "A short descriptive title of this document"
+										},
+										{
+											"key": "organization",
+											"value": "<string>",
+											"description": "The organization that published the document"
+										},
+										{
+											"key": "license",
+											"value": "<string>",
+											"description": "The license under which the document is published"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "null"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "backgrounds",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Background",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backgrounds/:slug/?name=<string>&skill_proficiencies=<string>&languages=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backgrounds",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "skill_proficiencies",
+											"value": "<string>",
+											"description": "skill_proficiencies"
+										},
+										{
+											"key": "languages",
+											"value": "<string>",
+											"description": "languages"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this background."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular background."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/backgrounds/:slug/?name=<string>&skill_proficiencies=<string>&languages=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"backgrounds",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "skill_proficiencies",
+													"value": "<string>",
+													"description": "skill_proficiencies"
+												},
+												{
+													"key": "languages",
+													"value": "<string>",
+													"description": "languages"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"equipment\": \"<string>\",\n  \"feature\": \"<string>\",\n  \"feature_desc\": \"<string>\",\n  \"suggested_characteristics\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"skill_proficiencies\": \"<string>\",\n  \"tool_proficiencies\": \"<string>\",\n  \"languages\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\",\n  \"document__license_url\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Backgrounds",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/backgrounds/?page=<integer>&limit=<integer>&name=<string>&skill_proficiencies=<string>&languages=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"backgrounds",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "skill_proficiencies",
+									"value": "<string>",
+									"description": "skill_proficiencies"
+								},
+								{
+									"key": "languages",
+									"value": "<string>",
+									"description": "languages"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of backgrounds."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/backgrounds/?page=<integer>&limit=<integer>&name=<string>&skill_proficiencies=<string>&languages=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"backgrounds",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "skill_proficiencies",
+											"value": "<string>",
+											"description": "skill_proficiencies"
+										},
+										{
+											"key": "languages",
+											"value": "<string>",
+											"description": "languages"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"equipment\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"feature_desc\": \"<string>\",\n      \"suggested_characteristics\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"skill_proficiencies\": \"<string>\",\n      \"tool_proficiencies\": \"<string>\",\n      \"languages\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"equipment\": \"<string>\",\n      \"feature\": \"<string>\",\n      \"feature_desc\": \"<string>\",\n      \"suggested_characteristics\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"skill_proficiencies\": \"<string>\",\n      \"tool_proficiencies\": \"<string>\",\n      \"languages\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "planes",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Plane",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/planes/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"planes",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this plane."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular plane."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/planes/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"planes",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Planes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/planes/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"planes",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of planes."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/planes/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"planes",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "sections",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Section",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/sections/:slug/?name=<string>&parent=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sections",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "parent",
+											"value": "<string>",
+											"description": "parent"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this section."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular section."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/sections/:slug/?name=<string>&parent=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"sections",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "parent",
+													"value": "<string>",
+													"description": "parent"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\",\n  \"document__license_url\": \"<string>\",\n  \"parent\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Sections",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/sections/?page=<integer>&limit=<integer>&name=<string>&parent=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"sections",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "parent",
+									"value": "<string>",
+									"description": "parent"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of sections."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/sections/?page=<integer>&limit=<integer>&name=<string>&parent=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"sections",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "parent",
+											"value": "<string>",
+											"description": "parent"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\",\n      \"parent\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\",\n      \"parent\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "feats",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Feat",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/feats/:slug/?name=<string>&prerequisite=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feats",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "prerequisite",
+											"value": "<string>",
+											"description": "prerequisite"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this feat."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular feat."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/feats/:slug/?name=<string>&prerequisite=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"feats",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "prerequisite",
+													"value": "<string>",
+													"description": "prerequisite"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"prerequisite\": \"<string>\",\n  \"effects_desc\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Feats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/feats/?page=<integer>&limit=<integer>&name=<string>&prerequisite=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"feats",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "prerequisite",
+									"value": "<string>",
+									"description": "prerequisite"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of feats."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/feats/?page=<integer>&limit=<integer>&name=<string>&prerequisite=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"feats",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "prerequisite",
+											"value": "<string>",
+											"description": "prerequisite"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"prerequisite\": \"<string>\",\n      \"effects_desc\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"prerequisite\": \"<string>\",\n      \"effects_desc\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "conditions",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Condition",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/conditions/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"conditions",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this condition."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular condition."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/conditions/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"conditions",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Conditions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/conditions/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"conditions",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of conditions."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/conditions/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"conditions",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "races",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Race",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/races/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"races",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this race."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular race."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/races/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"races",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"asi_desc\": \"<string>\",\n  \"age\": \"<string>\",\n  \"alignment\": \"<string>\",\n  \"size\": \"<string>\",\n  \"speed_desc\": \"<string>\",\n  \"languages\": \"<string>\",\n  \"vision\": \"<string>\",\n  \"traits\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"asi\": \"<string>\",\n  \"speed\": \"<string>\",\n  \"subraces\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"traits\": \"<string>\",\n      \"asi_desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"asi\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"traits\": \"<string>\",\n      \"asi_desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"asi\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    }\n  ],\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\",\n  \"document__license_url\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Races",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/races/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"races",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of races."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/races/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"races",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"asi_desc\": \"<string>\",\n      \"age\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"size\": \"<string>\",\n      \"speed_desc\": \"<string>\",\n      \"languages\": \"<string>\",\n      \"vision\": \"<string>\",\n      \"traits\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"asi\": \"<string>\",\n      \"speed\": \"<string>\",\n      \"subraces\": [\n        {\n          \"name\": \"<string>\",\n          \"desc\": \"<string>\",\n          \"traits\": \"<string>\",\n          \"asi_desc\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"asi\": \"<string>\",\n          \"document__slug\": \"<string>\",\n          \"document__title\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"desc\": \"<string>\",\n          \"traits\": \"<string>\",\n          \"asi_desc\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"asi\": \"<string>\",\n          \"document__slug\": \"<string>\",\n          \"document__title\": \"<string>\"\n        }\n      ],\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"asi_desc\": \"<string>\",\n      \"age\": \"<string>\",\n      \"alignment\": \"<string>\",\n      \"size\": \"<string>\",\n      \"speed_desc\": \"<string>\",\n      \"languages\": \"<string>\",\n      \"vision\": \"<string>\",\n      \"traits\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"asi\": \"<string>\",\n      \"speed\": \"<string>\",\n      \"subraces\": [\n        {\n          \"name\": \"<string>\",\n          \"desc\": \"<string>\",\n          \"traits\": \"<string>\",\n          \"asi_desc\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"asi\": \"<string>\",\n          \"document__slug\": \"<string>\",\n          \"document__title\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"desc\": \"<string>\",\n          \"traits\": \"<string>\",\n          \"asi_desc\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"asi\": \"<string>\",\n          \"document__slug\": \"<string>\",\n          \"document__title\": \"<string>\"\n        }\n      ],\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "classes",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Class",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/classes/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"classes",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this char class."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular class or archetype."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/classes/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"classes",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"hit_dice\": \"<string>\",\n  \"hp_at_1st_level\": \"<string>\",\n  \"hp_at_higher_levels\": \"<string>\",\n  \"prof_armor\": \"<string>\",\n  \"prof_weapons\": \"<string>\",\n  \"prof_tools\": \"<string>\",\n  \"prof_saving_throws\": \"<string>\",\n  \"prof_skills\": \"<string>\",\n  \"equipment\": \"<string>\",\n  \"table\": \"<string>\",\n  \"spellcasting_ability\": \"<string>\",\n  \"subtypes_name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"archetypes\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    }\n  ],\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\",\n  \"document__license_url\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Classes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/classes/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"classes",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of classes and archetypes."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/classes/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"classes",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"hit_dice\": \"<string>\",\n      \"hp_at_1st_level\": \"<string>\",\n      \"hp_at_higher_levels\": \"<string>\",\n      \"prof_armor\": \"<string>\",\n      \"prof_weapons\": \"<string>\",\n      \"prof_tools\": \"<string>\",\n      \"prof_saving_throws\": \"<string>\",\n      \"prof_skills\": \"<string>\",\n      \"equipment\": \"<string>\",\n      \"table\": \"<string>\",\n      \"spellcasting_ability\": \"<string>\",\n      \"subtypes_name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"archetypes\": [\n        {\n          \"name\": \"<string>\",\n          \"desc\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"document__slug\": \"<string>\",\n          \"document__title\": \"<string>\",\n          \"document__license_url\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"desc\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"document__slug\": \"<string>\",\n          \"document__title\": \"<string>\",\n          \"document__license_url\": \"<string>\"\n        }\n      ],\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"hit_dice\": \"<string>\",\n      \"hp_at_1st_level\": \"<string>\",\n      \"hp_at_higher_levels\": \"<string>\",\n      \"prof_armor\": \"<string>\",\n      \"prof_weapons\": \"<string>\",\n      \"prof_tools\": \"<string>\",\n      \"prof_saving_throws\": \"<string>\",\n      \"prof_skills\": \"<string>\",\n      \"equipment\": \"<string>\",\n      \"table\": \"<string>\",\n      \"spellcasting_ability\": \"<string>\",\n      \"subtypes_name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"archetypes\": [\n        {\n          \"name\": \"<string>\",\n          \"desc\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"document__slug\": \"<string>\",\n          \"document__title\": \"<string>\",\n          \"document__license_url\": \"<string>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"desc\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"document__slug\": \"<string>\",\n          \"document__title\": \"<string>\",\n          \"document__license_url\": \"<string>\"\n        }\n      ],\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "magicitems",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Magic Item",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/magicitems/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"magicitems",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this magic item."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular magic item."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/magicitems/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"magicitems",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"desc\": \"<string>\",\n  \"rarity\": \"<string>\",\n  \"requires_attunement\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Magic Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/magicitems/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"magicitems",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of magic items."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/magicitems/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"magicitems",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"rarity\": \"<string>\",\n      \"requires_attunement\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"desc\": \"<string>\",\n      \"rarity\": \"<string>\",\n      \"requires_attunement\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "weapons",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Weapon",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/weapons/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"weapons",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this weapon."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular weapon."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/weapons/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"weapons",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"category\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"damage_dice\": \"<string>\",\n  \"damage_type\": \"<string>\",\n  \"weight\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\",\n  \"document__license_url\": \"<string>\",\n  \"properties\": \"<string>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Weapons",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/weapons/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"weapons",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of weapons."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/weapons/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"weapons",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"cost\": \"<string>\",\n      \"damage_dice\": \"<string>\",\n      \"damage_type\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\",\n      \"properties\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"cost\": \"<string>\",\n      \"damage_dice\": \"<string>\",\n      \"damage_type\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\",\n      \"properties\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "armor",
+			"item": [
+				{
+					"name": "{slug}",
+					"item": [
+						{
+							"name": "Retrieve Armor",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/armor/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"armor",
+										":slug",
+										""
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "<string>",
+											"description": "(Required) A unique value identifying this armor."
+										}
+									]
+								},
+								"description": "API endpoint for returning a particular armor."
+							},
+							"response": [
+								{
+									"name": "Untitled Response",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/armor/:slug/?name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"armor",
+												":slug",
+												""
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "<string>",
+													"description": "name"
+												},
+												{
+													"key": "document__slug",
+													"value": "<string>",
+													"description": "document__slug"
+												},
+												{
+													"key": "ordering",
+													"value": "<string>",
+													"description": "Which field to use when ordering the results."
+												},
+												{
+													"key": "search",
+													"value": "<string>",
+													"description": "A search term."
+												}
+											],
+											"variable": [
+												{
+													"key": "slug"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"name\": \"<string>\",\n  \"category\": \"<string>\",\n  \"cost\": \"<string>\",\n  \"weight\": \"<string>\",\n  \"stealth_disadvantage\": \"<boolean>\",\n  \"slug\": \"<string>\",\n  \"document__slug\": \"<string>\",\n  \"document__title\": \"<string>\",\n  \"document__license_url\": \"<string>\",\n  \"ac_string\": \"<string>\",\n  \"strength_requirement\": \"<integer>\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List Armor",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/armor/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"armor",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "name"
+								},
+								{
+									"key": "document__slug",
+									"value": "<string>",
+									"description": "document__slug"
+								},
+								{
+									"key": "ordering",
+									"value": "<string>",
+									"description": "Which field to use when ordering the results."
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "A search term."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of armor."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/armor/?page=<integer>&limit=<integer>&name=<string>&document__slug=<string>&ordering=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"armor",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										},
+										{
+											"key": "name",
+											"value": "<string>",
+											"description": "name"
+										},
+										{
+											"key": "document__slug",
+											"value": "<string>",
+											"description": "document__slug"
+										},
+										{
+											"key": "ordering",
+											"value": "<string>",
+											"description": "Which field to use when ordering the results."
+										},
+										{
+											"key": "search",
+											"value": "<string>",
+											"description": "A search term."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"cost\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"stealth_disadvantage\": \"<boolean>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\",\n      \"ac_string\": \"<string>\",\n      \"strength_requirement\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"category\": \"<string>\",\n      \"cost\": \"<string>\",\n      \"weight\": \"<string>\",\n      \"stealth_disadvantage\": \"<boolean>\",\n      \"slug\": \"<string>\",\n      \"document__slug\": \"<string>\",\n      \"document__title\": \"<string>\",\n      \"document__license_url\": \"<string>\",\n      \"ac_string\": \"<string>\",\n      \"strength_requirement\": \"<integer>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "search",
+			"item": [
+				{
+					"name": "Search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/search/?page=<integer>&limit=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "<integer>",
+									"description": "A page number within the paginated result set."
+								},
+								{
+									"key": "limit",
+									"value": "<integer>",
+									"description": "Number of results to return per page."
+								}
+							]
+						},
+						"description": "API endpoint for returning a list of search results from the Open5e database."
+					},
+					"response": [
+						{
+							"name": "Untitled Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/search/?page=<integer>&limit=<integer>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "<integer>",
+											"description": "A page number within the paginated result set."
+										},
+										{
+											"key": "limit",
+											"value": "<integer>",
+											"description": "Number of results to return per page."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"count\": \"<integer>\",\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\",\n  \"results\": [\n    {\n      \"_MonsterIndex__text\": \"<string>\",\n      \"_MonsterIndex__name\": \"<string>\",\n      \"_MonsterIndex__hit_dice\": \"<string>\",\n      \"_MonsterIndex__challenge_rating\": \"<string>\",\n      \"_MonsterIndex__document_slug\": \"<string>\",\n      \"_MonsterIndex__document_title\": \"<string>\",\n      \"_SpellIndex__document_slug\": \"<string>\",\n      \"_SpellIndex__document_title\": \"<string>\",\n      \"_SpellIndex__text\": \"<string>\",\n      \"_SpellIndex__name\": \"<string>\",\n      \"_SpellIndex__ritual\": \"<string>\",\n      \"_SpellIndex__level\": \"<string>\",\n      \"_SpellIndex__school\": \"<string>\",\n      \"_SpellIndex__dnd_class\": \"<string>\",\n      \"_SectionIndex__document_slug\": \"<string>\",\n      \"_SectionIndex__document_title\": \"<string>\",\n      \"_SectionIndex__text\": \"<string>\",\n      \"_SectionIndex__name\": \"<string>\",\n      \"_ConditionIndex__document_slug\": \"<string>\",\n      \"_ConditionIndex__document_title\": \"<string>\",\n      \"_ConditionIndex__text\": \"<string>\",\n      \"_ConditionIndex__name\": \"<string>\",\n      \"_CharClassIndex__document_slug\": \"<string>\",\n      \"_CharClassIndex__document_title\": \"<string>\",\n      \"_CharClassIndex__text\": \"<string>\",\n      \"_CharClassIndex__name\": \"<string>\",\n      \"_RaceIndex__document_slug\": \"<string>\",\n      \"_RaceIndex__document_title\": \"<string>\",\n      \"_RaceIndex__text\": \"<string>\",\n      \"_RaceIndex__name\": \"<string>\",\n      \"_MagicItemIndex__document_slug\": \"<string>\",\n      \"_MagicItemIndex__document_title\": \"<string>\",\n      \"_MagicItemIndex__text\": \"<string>\",\n      \"_MagicItemIndex__name\": \"<string>\",\n      \"_MagicItemIndex__type\": \"<string>\",\n      \"_MagicItemIndex__rarity\": \"<string>\",\n      \"_MagicItemIndex__requires_attunement\": \"<string>\",\n      \"_MonsterIndex__route\": \"<string>\",\n      \"_MonsterIndex__slug\": \"<string>\",\n      \"_MonsterIndex__armor_class\": \"<string>\",\n      \"_MonsterIndex__hit_points\": \"<string>\",\n      \"_MonsterIndex__strength\": \"<string>\",\n      \"_MonsterIndex__dexterity\": \"<string>\",\n      \"_MonsterIndex__constitution\": \"<string>\",\n      \"_MonsterIndex__intelligence\": \"<string>\",\n      \"_MonsterIndex__wisdom\": \"<string>\",\n      \"_MonsterIndex__charisma\": \"<string>\",\n      \"_SpellIndex__route\": \"<string>\",\n      \"_SpellIndex__slug\": \"<string>\",\n      \"_SectionIndex__route\": \"<string>\",\n      \"_SectionIndex__slug\": \"<string>\",\n      \"_ConditionIndex__route\": \"<string>\",\n      \"_ConditionIndex__slug\": \"<string>\",\n      \"_CharClassIndex__route\": \"<string>\",\n      \"_CharClassIndex__slug\": \"<string>\",\n      \"_RaceIndex__route\": \"<string>\",\n      \"_RaceIndex__slug\": \"<string>\",\n      \"_MagicItemIndex__route\": \"<string>\",\n      \"_MagicItemIndex__slug\": \"<string>\"\n    },\n    {\n      \"_MonsterIndex__text\": \"<string>\",\n      \"_MonsterIndex__name\": \"<string>\",\n      \"_MonsterIndex__hit_dice\": \"<string>\",\n      \"_MonsterIndex__challenge_rating\": \"<string>\",\n      \"_MonsterIndex__document_slug\": \"<string>\",\n      \"_MonsterIndex__document_title\": \"<string>\",\n      \"_SpellIndex__document_slug\": \"<string>\",\n      \"_SpellIndex__document_title\": \"<string>\",\n      \"_SpellIndex__text\": \"<string>\",\n      \"_SpellIndex__name\": \"<string>\",\n      \"_SpellIndex__ritual\": \"<string>\",\n      \"_SpellIndex__level\": \"<string>\",\n      \"_SpellIndex__school\": \"<string>\",\n      \"_SpellIndex__dnd_class\": \"<string>\",\n      \"_SectionIndex__document_slug\": \"<string>\",\n      \"_SectionIndex__document_title\": \"<string>\",\n      \"_SectionIndex__text\": \"<string>\",\n      \"_SectionIndex__name\": \"<string>\",\n      \"_ConditionIndex__document_slug\": \"<string>\",\n      \"_ConditionIndex__document_title\": \"<string>\",\n      \"_ConditionIndex__text\": \"<string>\",\n      \"_ConditionIndex__name\": \"<string>\",\n      \"_CharClassIndex__document_slug\": \"<string>\",\n      \"_CharClassIndex__document_title\": \"<string>\",\n      \"_CharClassIndex__text\": \"<string>\",\n      \"_CharClassIndex__name\": \"<string>\",\n      \"_RaceIndex__document_slug\": \"<string>\",\n      \"_RaceIndex__document_title\": \"<string>\",\n      \"_RaceIndex__text\": \"<string>\",\n      \"_RaceIndex__name\": \"<string>\",\n      \"_MagicItemIndex__document_slug\": \"<string>\",\n      \"_MagicItemIndex__document_title\": \"<string>\",\n      \"_MagicItemIndex__text\": \"<string>\",\n      \"_MagicItemIndex__name\": \"<string>\",\n      \"_MagicItemIndex__type\": \"<string>\",\n      \"_MagicItemIndex__rarity\": \"<string>\",\n      \"_MagicItemIndex__requires_attunement\": \"<string>\",\n      \"_MonsterIndex__route\": \"<string>\",\n      \"_MonsterIndex__slug\": \"<string>\",\n      \"_MonsterIndex__armor_class\": \"<string>\",\n      \"_MonsterIndex__hit_points\": \"<string>\",\n      \"_MonsterIndex__strength\": \"<string>\",\n      \"_MonsterIndex__dexterity\": \"<string>\",\n      \"_MonsterIndex__constitution\": \"<string>\",\n      \"_MonsterIndex__intelligence\": \"<string>\",\n      \"_MonsterIndex__wisdom\": \"<string>\",\n      \"_MonsterIndex__charisma\": \"<string>\",\n      \"_SpellIndex__route\": \"<string>\",\n      \"_SpellIndex__slug\": \"<string>\",\n      \"_SectionIndex__route\": \"<string>\",\n      \"_SectionIndex__slug\": \"<string>\",\n      \"_ConditionIndex__route\": \"<string>\",\n      \"_ConditionIndex__slug\": \"<string>\",\n      \"_CharClassIndex__route\": \"<string>\",\n      \"_CharClassIndex__slug\": \"<string>\",\n      \"_RaceIndex__route\": \"<string>\",\n      \"_RaceIndex__slug\": \"<string>\",\n      \"_MagicItemIndex__route\": \"<string>\",\n      \"_MagicItemIndex__slug\": \"<string>\"\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.open5e.com/"
+		},
+		{
+			"key": "name",
+			"value": "Acolyte"
+		}
+	]
+}
