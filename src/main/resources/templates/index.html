@@ -2,10 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title th:text="|DMPreroll ${applicationName}|"/>
 </head>
 <body>
-<p th:text="|DMPreroll ${applicationName}|"/>
+<h1 th:text="|DMPreroll ${applicationName}|"/>
+
+<h2>Monster Lookup Form</h2>
+<form action="#" th:action="@{/}" th:object="${request}" method="post">
+    <p>slug: <input type="text" th:field="*{slug}"/></p>
+<!--    <p>name: <input type="text" th:field="*{name}"/></p>-->
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
+
+
+<div class="container">
+    <th:block th:if="${monster}">
+        <h2>Monster Results</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>NAME</th>
+                <th>SLUG</th>
+            </tr>
+            </thead>
+            <tbody th:remove="all-but-first">
+            <tr>
+                <td th:text="${monster.name}">name</td>
+                <td th:text="${monster.slug}">slug</td>
+            </tr>
+            <tr class="odd">
+                <td>Blue Dragon</td>
+                <td>blue_dragon</td>
+            </tr>
+            <tr>
+                <td>Bullette</td>
+                <td>bullette</td>
+                >
+            </tr>
+            </tbody>
+        </table>
+    </th:block>
+</div>
 
 </body>
 </html>
